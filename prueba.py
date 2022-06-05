@@ -12,7 +12,6 @@ from Estructuras import cola,Pila
 # Es decir que cada cuadrilla se debe recicibir su humedad
 
 #Si se hacen lecturas cada 10 min serian 144 lecturas en un dia
-pilaContingencias=Pila()
 def lectura(Datos,pilaContingencias):
     contador=1
     while contador<=5:
@@ -20,13 +19,12 @@ def lectura(Datos,pilaContingencias):
             print("La ultima medicion requerida no a sido entregada")
         else:
             humedadcuadrillas=Datos[contador-1][5]
-            if(compruebahumedad(humedadcuadrillas)==1):
+            numero1=compruebahumedad(humedadcuadrillas)
+            if(numero1==1):
+                pilaContingencias.apilar("Regar")
+            elif(numero1!=1 and numero1!=-1):
                 colaRegar=cola()
-                colaRegar=creaColaRegar(Datos[contador-1][5],len(Datos[contador-1][5]))
-                pilaContingencias.apilar(colaRegar)
-            elif(compruebahumedad(humedadcuadrillas)!=1):
-                colaRegar=cola()
-                colaRegar=creaColaRegar(Datos[contador-1][5],len(Datos[contador-1][5]))
+                colaRegar=crearColaRegarParcial(Datos[contador-1][5],len(Datos[contador-1][5]),numero1)
                 pilaContingencias.apilar(colaRegar)
             temperatura=Datos[contador-1][2]
             if(comprueba_temperatura(temperatura,contador)):
@@ -90,26 +88,14 @@ def compruebahumedad(Datos):
         return -1
 def crearColaRegarParcial(Datos,numeroDatos,suma): 
     miCola = cola()
-    arregloaux1=sorted(Datos)
-    i=0
-    while(i<numeroDatos and (abs(Datos[i]-suma)>51)):
-        j=0
-        while(j<numeroDatos):
-            if(Datos[j]==arregloaux1[i]):
-                miCola.encolar(j)
-            j+=1
-        i+=1
-        
-def creaColaRegar(Datos,numeroDatos):
-    miCola = cola()
-    arregloaux1=(Datos.sort())
     i=0
     while(i<numeroDatos):
-        j=0
-        while(j<numeroDatos):
-            if(Datos[j]==arregloaux1[i]):
-                miCola.encolar(j)
-            j+=1
+        if(abs(Datos[i]-suma)>51):
+            miCola.encolar(i)
         i+=1
-def Contingencia(pila):
-    print(pila.desapilar())
+    return miCola
+def Contingencia(pilacontingecias):
+    pila=Pila()
+    pila=pilacontingecias
+    hd=pila.desapilar()
+    print(hd)

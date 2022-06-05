@@ -123,8 +123,3 @@ class linkedList:
             if cur_id == index: return curNode.Value
             curNode = curNode.next
             cur_id += 1
-
-
-
-
-
