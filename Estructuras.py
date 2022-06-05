@@ -39,6 +39,26 @@ class Pila:
         self.superior = self.superior.siguiente
         self.size-=1
         return a 
+    def get(self,index):
+        if index >= self.size:
+            return None
+        cur_id = 0
+        curNode = self.superior
+        while True:
+            if cur_id == index: return curNode.dato
+            curNode = curNode.siguiente
+            cur_id += 1
+    def actualizar(self,index,valor):
+        if index >= self.size:
+            return None
+        cur_id = 0
+        curNode = self.superior
+        while True:
+            if cur_id == index: 
+                curNode.dato= valor 
+                return
+            curNode = curNode.siguiente
+            cur_id += 1
 class nodeCola:
     def __init__(self,Value):
         self.Value = Value
@@ -81,6 +101,26 @@ class cola:
             return valor 
         else:     
             raise ValueError("La cola está vacía")
+    def get(self,index):
+        if index >= self.size:
+            return None
+        cur_id = 0
+        curNode = self.First
+        while True:
+            if cur_id == index: return curNode.Value
+            curNode = curNode.next
+            cur_id += 1
+    def actualizar(self,index,valor):
+        if index >= self.size:
+            return None
+        cur_id = 0
+        curNode = self.First
+        while True:
+            if cur_id == index: 
+                curNode.Value= valor 
+                return
+            curNode = curNode.next
+            cur_id += 1
 class node:
     def __init__(self,Value):
         self.Value = Value
