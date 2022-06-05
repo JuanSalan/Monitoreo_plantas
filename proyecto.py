@@ -1,5 +1,5 @@
 from math import *
-
+import random
 class Nodo:
     def __init__(self, dato):
         self.dato = dato
@@ -8,6 +8,8 @@ class Pila:
     def __init__(self):
         self.superior = None
         self.size = 0
+    def __len__(self):
+        return self.size
     def apilar(self, dato):
         if self.superior == None:
             self.superior = Nodo(dato)
@@ -20,10 +22,10 @@ class Pila:
         st = "["
         cur = self.superior
         for i in range(len(self)):
-            st += str(cur)
+            st += str(cur.dato)
             if i != len(self) - 1:
                 st += str(", ")
-            cur = cur.next
+            cur = cur.siguiente
         st += "]"
         return st
     def desapilar(self):
@@ -129,7 +131,6 @@ class linkedList:
 # Por cada medicion se tiene que recibir un unico dato de : hora o numero representativo , temperatura , humedad
 # Por cada medicion se tiene que recibir los datos de cada cuadrilla
 # Es decir que cada cuadrilla se debe recicibir su humedad
-#hola]
 dato1=(1,1,150,125,34,(716,728,735,758,754,751,734,761,724,784))
 dato2=(2,1,152,122,35,(716,728,735,758,754,751,734,761,724,784))
 dato3=(3,1,158,119,37,(716,728,735,758,754,751,734,761,724,784))
@@ -212,6 +213,10 @@ def Contingencia():
 
 
 a = Pila()
-a.apilar(1)
-a.apilar(2)
-print(a.desapilar())
+lista = random.sample(range(10000000), 10000)
+for i in lista:
+    a.apilar(i)
+print(a)
+for j in range(9999):
+    a.desapilar()
+print(a)
