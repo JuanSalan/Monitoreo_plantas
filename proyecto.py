@@ -4,6 +4,8 @@ class Nodo:
     def __init__(self, dato):
         self.dato = dato
         self.siguiente = None
+    def __str__(self):
+        return str(self.dato)
 class Pila:
     def __init__(self):
         self.superior = None
@@ -13,6 +15,7 @@ class Pila:
     def apilar(self, dato):
         if self.superior == None:
             self.superior = Nodo(dato)
+            self.size+=1
             return
         nuevo_nodo = Nodo(dato)
         nuevo_nodo.siguiente = self.superior
@@ -21,8 +24,8 @@ class Pila:
     def __str__(self):
         st = "["
         cur = self.superior
-        for i in range(len(self)):
-            st += str(cur.dato)
+        for i in range(self.size):
+            st += str(cur)
             if i != len(self) - 1:
                 st += str(", ")
             cur = cur.siguiente
@@ -211,12 +214,8 @@ def Contingencia():
     if True:
         return "xd"
 
+pila=Pila()
+pila.apilar("xd")
+pila.apilar("xdn't")
+print(pila)
 
-a = Pila()
-lista = random.sample(range(10000000), 10000)
-for i in lista:
-    a.apilar(i)
-print(a)
-for j in range(9999):
-    a.desapilar()
-print(a)
