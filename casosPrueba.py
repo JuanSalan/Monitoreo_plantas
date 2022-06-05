@@ -1,0 +1,24 @@
+import prueba
+import Estructuras
+import time
+from math import *
+import random
+start = time.time()
+pilaContingencias=Estructuras.Pila()
+lista = random.choices(range(1023), k=20000000)
+lista2 =random.choices(range(1023), k=20000000)
+lista3 = random.choices(range(1023), k=20000000)
+lista4 =random.choices(range(1023), k=20000000)
+lista5 = random.choices(range(1023), k=20000000)
+dato1=(1,1,150,125,34,lista)
+dato2=(2,1,152,122,35,lista)
+dato3=(3,1,158,119,37,lista)
+dato4=(4,1,159,119,37,lista)
+dato5=(5,1,160,117,36,lista)
+
+
+Datos=(dato1,dato2,dato3,dato4,dato5)
+prueba.lectura(Datos,pilaContingencias)
+print("The time used to execute this is given below")
+end = time.time()
+print(end - start)
