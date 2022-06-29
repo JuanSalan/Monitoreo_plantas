@@ -12,6 +12,7 @@ from Estructuras import cola,Pila
 # Es decir que cada cuadrilla se debe recicibir su humedad
 
 #Si se hacen lecturas cada 10 min serian 144 lecturas en un dia
+import time
 def lectura(Datos,pilaContingencias):
     contador=1
     while contador<=5:
@@ -19,7 +20,11 @@ def lectura(Datos,pilaContingencias):
             print("La ultima medicion requerida no a sido entregada")
         else:
             humedadcuadrillas=Datos[contador-1][5]
+            start1 = time.time()
             numero1=compruebahumedad(humedadcuadrillas)
+            print("The time used to execute this is given below humedad")
+            end1 = time.time()
+            print(end1 - start1)
             if(numero1==1):
                 pilaContingencias.apilar("Regar")
             elif(numero1!=1 and numero1!=-1):
@@ -27,10 +32,16 @@ def lectura(Datos,pilaContingencias):
                 colaRegar=crearColaRegarParcial(Datos[contador-1][5],len(Datos[contador-1][5]),numero1)
                 pilaContingencias.apilar(colaRegar)
             temperatura=Datos[contador-1][2]
-            if(comprueba_temperatura(temperatura,contador)):
+            start2 = time.time()
+            cond =comprueba_temperatura(temperatura,contador)
+            print("The time used to execute this is given below temperatura")
+            end2 = time.time()
+            print(end2 - start2)
+            if(cond):
                 pilaContingencias.apilar("Temperatura")
             if(pilaContingencias.size!=0):
-                Contingencia(pilaContingencias)
+                pass
+                #Contingencia(pilaContingencias)
         contador+=1
             
 

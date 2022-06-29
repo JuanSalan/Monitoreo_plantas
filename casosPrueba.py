@@ -5,11 +5,11 @@ from math import *
 import random
 start = time.time()
 pilaContingencias=Estructuras.Pila()
-lista = random.choices(range(1023), k=2000000)
-lista2 =random.choices(range(1023), k=2000000)
-lista3 = random.choices(range(1023), k=2000000)
-lista4 =random.choices(range(1023), k=2000000)
-lista5 = random.choices(range(1023), k=2000000)
+lista = random.choices(range(1023), k=20000000)
+lista2 =random.choices(range(1023), k=20000000)
+lista3 = random.choices(range(1023), k=20000000)
+lista4 =random.choices(range(1023), k=20000000)
+lista5 = random.choices(range(1023), k=20000000)
 dato1=[1,1,150,125,34,lista]
 dato2=[2,1,152,122,35,lista2]
 dato3=[3,1,158,119,37,lista3]
